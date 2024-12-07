@@ -1,0 +1,13 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "This repository contains my JavaScript solutions for Advent of Code 2024. It's my first year tackling these puzzles, so please pardon any janky code along the way!",
+  "scripts": {},
+  "keywords": [
+    "advent of code",
+    "javascript",
+    "2024"
+  ],
+  "author": "henry-tran-1",
+  "license": "MIT"
+}

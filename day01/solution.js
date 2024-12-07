@@ -25,8 +25,8 @@ for (let i = 0; i < listLeft.length; i++) {
   distance += Math.abs(listLeft[i] - listRight[i])
 }
 
-// -- Part 1 Solved -- //
 console.log('Solution to Part 1:', distance)
+// -- Part 1 Solved -- //
 
 // ============================== Part 2 ============================== //
 let similarity = 0
@@ -41,5 +41,5 @@ listLeft.forEach((leftNumber) => {
   similarity += leftNumber * matchCount
 })
 
-// -- Part 2 Solved -- //
 console.log('Solution to Part 2:', similarity)
+// -- Part 2 Solved -- //

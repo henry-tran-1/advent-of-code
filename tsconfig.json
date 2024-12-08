@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "target": "es2019",
+    "types": ["node"] // Add this line to include Node.js type definitions
+  }
+}

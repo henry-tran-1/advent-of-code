@@ -9,5 +9,8 @@
     "2024"
   ],
   "author": "henry-tran-1",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.1"
+  }
 }

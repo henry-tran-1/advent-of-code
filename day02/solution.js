@@ -102,5 +102,4 @@ reports.forEach((report) => {
 })
 
 console.log('Solution to Part 2:', safeTotalDampened)
-
 // -- Part 2 Solved -- //

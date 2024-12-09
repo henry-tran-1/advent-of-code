@@ -16,42 +16,101 @@ function xmasSearch(line: string) {
   return xmasCount
 }
 
-// horizontal lines
-const horizontalArr: string[] = demoInput.trim().split('\n')
-const horizontalCount = horizontalArr.reduce((total: number, line: string) => {
-  return xmasSearch(line) + total
-}, 0)
+function returnCount(arr: string[]) {
+  return arr.reduce((total: number, line: string) => {
+    return xmasSearch(line) + total
+  }, 0)
+}
+
+// turn input into grid
+const grid: string[][] = input
+  .trim()
+  .split('\n')
+  .map((line: string) => line.split(''))
+
+// horizontal lines, don't need grid
+const horizontalArr: string[] = input.trim().split('\n')
+const horizontalCount = returnCount(horizontalArr)
 
 // vertical lines
 const verticalArr: string[] = []
-// create vertical lines
-// first loop, goes through each horizontal line
-for (let i = 0; i < horizontalArr.length; i++) {
-  // second loop goes through each character
-  for (let j = 0; j < horizontalArr[0].length; j++) {
+for (let i = 0; i < grid.length; i++) {
+  for (let j = 0; j < grid.length; j++) {
     if (i === 0) {
-      verticalArr.push(horizontalArr[i].charAt(0))
+      verticalArr.push(grid[i][j])
     } else {
-      verticalArr[j] = verticalArr[j] + horizontalArr[i].charAt(j)
+      verticalArr[j] = verticalArr[j] + grid[i][j]
     }
   }
 }
-const verticalCount = verticalArr.reduce((total: number, line: string) => {
-  return xmasSearch(line) + total
-}, 0)
+const verticalCount = returnCount(verticalArr)
 
 // downRight diagonal lines
 const downRightArr: string[] = []
 
+// top half of downright diagonal
+// outer loop for [0][0] to [0][9]
+for (let i = 0; i < grid[0].length; i++) {
+  let row = 0
+  let col = i
+  let diagonal = ''
+  while (row < grid.length && col >= 0) {
+    diagonal += grid[row][col]
+    row += 1
+    col -= 1
+  }
+  downRightArr.push(diagonal)
+}
+// bottom half of downright diagonal
+// outer loop for [1][9] to [9][9]
+for (let i = 1; i < grid.length; i++) {
+  let row = i
+  let col = grid.length - 1
+  let diagonal = ''
+  while (row < grid.length && col >= 0) {
+    diagonal += grid[row][col]
+    row += 1
+    col -= 1
+  }
+  downRightArr.push(diagonal)
+}
+const downRightCount = returnCount(downRightArr)
+
 // upRight diagonal lines
 const upRightArr: string[] = []
-for (let i = 0; i < horizontalArr.length + verticalArr.length - 1; i++) {
-  upRightArr.push()
+
+// top half of upRight diagonal
+// outer loop for [0][0] to [0][9]
+for (let i = 0; i < grid[0].length; i++) {
+  let row = 0
+  let col = i
+  let diagonal = ''
+  while (row < grid.length && col < grid[0].length) {
+    diagonal += grid[row][col]
+    row += 1
+    col += 1
+  }
+  upRightArr.push(diagonal)
 }
+// bottom half of upRight diagonal
+// outer loop for [1][0] to [9][0]
+for (let i = 1; i < grid.length; i++) {
+  let row = i
+  let col = 0
+  let diagonal = ''
+  while (row < grid.length && col < grid[0].length) {
+    diagonal += grid[row][col]
+    row += 1
+    col += 1
+  }
+  upRightArr.push(diagonal)
+}
+const upRightCount = returnCount(upRightArr)
 
-console.log(horizontalCount)
-console.log(verticalCount)
+const totalCount =
+  horizontalCount + verticalCount + downRightCount + upRightCount
 
+console.log('Solution to Part 1: ', totalCount)
 // -- Part 1 Solved -- //
 
 // ============================== Part 2 ============================== //

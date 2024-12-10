@@ -23,7 +23,7 @@ function returnCount(arr: string[]) {
 }
 
 // turn input into grid
-const grid: string[][] = input
+const grid: string[][] = demoInput
   .trim()
   .split('\n')
   .map((line: string) => line.split(''))
@@ -114,5 +114,15 @@ console.log('Solution to Part 1: ', totalCount)
 // -- Part 1 Solved -- //
 
 // ============================== Part 2 ============================== //
+
+// downRightArr and upRightArr
+// search through diagonal lines for M-A-S or S-A-M
+// then note down grid[x][y] of the 'A'
+// then search through the opposite diagonal line, and check if that A has either M-A-S or S-A-M
+
+function crossMasSearch() {}
+
+console.log('UR', upRightArr)
+console.log('DR', downRightArr)
 
 // -- Part 2 Solved -- //

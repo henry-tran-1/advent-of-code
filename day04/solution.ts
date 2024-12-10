@@ -45,10 +45,10 @@ for (let i = 0; i < grid.length; i++) {
 }
 const verticalCount = returnCount(verticalArr)
 
-// downRight diagonal lines
-const downRightArr: string[] = []
+// upRight diagonal lines
+const upRightArr: string[] = []
 
-// top half of downright diagonal
+// top half of upRight diagonal
 // outer loop for [0][0] to [0][9]
 for (let i = 0; i < grid[0].length; i++) {
   let row = 0
@@ -59,9 +59,9 @@ for (let i = 0; i < grid[0].length; i++) {
     row += 1
     col -= 1
   }
-  downRightArr.push(diagonal)
+  upRightArr.push(diagonal)
 }
-// bottom half of downright diagonal
+// bottom half of upRight diagonal
 // outer loop for [1][9] to [9][9]
 for (let i = 1; i < grid.length; i++) {
   let row = i
@@ -72,14 +72,14 @@ for (let i = 1; i < grid.length; i++) {
     row += 1
     col -= 1
   }
-  downRightArr.push(diagonal)
+  upRightArr.push(diagonal)
 }
-const downRightCount = returnCount(downRightArr)
+const upRightCount = returnCount(upRightArr)
 
-// upRight diagonal lines
-const upRightArr: string[] = []
+// downRight diagonal lines
+const downRightArr: string[] = []
 
-// top half of upRight diagonal
+// top half of downRight diagonal
 // outer loop for [0][0] to [0][9]
 for (let i = 0; i < grid[0].length; i++) {
   let row = 0
@@ -90,9 +90,10 @@ for (let i = 0; i < grid[0].length; i++) {
     row += 1
     col += 1
   }
-  upRightArr.push(diagonal)
+  downRightArr.push(diagonal)
 }
-// bottom half of upRight diagonal
+const downRightCount = returnCount(downRightArr)
+// bottom half of downRight diagonal
 // outer loop for [1][0] to [9][0]
 for (let i = 1; i < grid.length; i++) {
   let row = i
@@ -103,9 +104,8 @@ for (let i = 1; i < grid.length; i++) {
     row += 1
     col += 1
   }
-  upRightArr.push(diagonal)
+  downRightArr.push(diagonal)
 }
-const upRightCount = returnCount(upRightArr)
 
 const totalCount =
   horizontalCount + verticalCount + downRightCount + upRightCount
@@ -122,7 +122,7 @@ console.log('Solution to Part 1: ', totalCount)
 
 function crossMasSearch() {}
 
-console.log('UR', upRightArr)
 console.log('DR', downRightArr)
+console.log('UR', upRightArr)
 
 // -- Part 2 Solved -- //

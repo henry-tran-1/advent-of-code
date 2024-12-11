@@ -25,13 +25,37 @@ function parseRules(input: string): Rule[] {
 
 // function to parse input into an array of updates
 function parseUpdates(input: string) {
-  const emptyIndex = input.split('\n').findIndex((line) => line === '')
-  const updatesBlock = input.split('\n').slice(emptyIndex + 1)
-  return updatesBlock
+  const splitInput = input.split('\n')
+  const emptyIndex = splitInput.findIndex((line) => line === '')
+  const updatesBlock = splitInput.slice(emptyIndex + 1)
+  return updatesBlock.map((line) => line.split(',').map(Number))   
 }
 
-console.log('rules parsed: ', parseRules(demoInput))
-console.log('updates parsed: ', parseUpdates(demoInput))
+const rules = parseRules(demoInput)
+const updates = parseUpdates(demoInput)
+
+
+// create an array of only correctly ordered updates
+const correctUpdates = updates.filter((update) => {
+  
+  // filter out irrelevant rules
+  const relevantRules = rules.filter((rule) => {
+    update.find(())
+
+
+  })
+
+
+
+
+
+})
+
+
+
+
+console.log('rules parsed: ', rules)
+console.log('updates parsed: ', updates)
 
 // -- Part 1 Solved -- //
 

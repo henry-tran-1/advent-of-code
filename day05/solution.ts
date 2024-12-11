@@ -10,7 +10,6 @@ interface Rule {
   before: number
   after: number
 }
-
 // function to parse input into an array of rule objects
 function parseRules(input: string): Rule[] {
   const rulesArr = input.match(/\d\d\|\d\d/g)
@@ -25,11 +24,14 @@ function parseRules(input: string): Rule[] {
 }
 
 // function to parse input into an array of updates
-// function parseUpdates(input: string) {
-//   input.split('\n')
-// }
+function parseUpdates(input: string) {
+  const emptyIndex = input.split('\n').findIndex((line) => line === '')
+  const updatesBlock = input.split('\n').slice(emptyIndex + 1)
+  return updatesBlock
+}
 
-console.log(demoInput.split("\n''\n"))
+console.log('rules parsed: ', parseRules(demoInput))
+console.log('updates parsed: ', parseUpdates(demoInput))
 
 // -- Part 1 Solved -- //
 

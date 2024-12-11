@@ -28,34 +28,40 @@ function parseUpdates(input: string) {
   const splitInput = input.split('\n')
   const emptyIndex = splitInput.findIndex((line) => line === '')
   const updatesBlock = splitInput.slice(emptyIndex + 1)
-  return updatesBlock.map((line) => line.split(',').map(Number))   
+  return updatesBlock.map((line) => line.split(',').map(Number))
 }
 
-const rules = parseRules(demoInput)
-const updates = parseUpdates(demoInput)
-
+const rules = parseRules(input)
+const updates = parseUpdates(input)
 
 // create an array of only correctly ordered updates
 const correctUpdates = updates.filter((update) => {
-  
   // filter out irrelevant rules
   const relevantRules = rules.filter((rule) => {
-    update.find(())
-
-
+    if (update.includes(rule.before && rule.after)) return rule
   })
 
-
-
-
-
+  // in updates, find the index of all rules.before and rules.after
+  // if in the correct order, then return true for the filter
+  let flag = true
+  relevantRules.forEach((rule) => {
+    const before = update.indexOf(rule.before)
+    const after = update.indexOf(rule.after)
+    if (before !== -1 || after !== -1) {
+      if (before > after) {
+        flag = false
+      }
+    }
+  })
+  if (flag === true) return update
 })
 
+const summedTotal = correctUpdates.reduce((total, update) => {
+  const middleIndex = update.length / 2 - 0.5
+  return total + update[middleIndex]
+}, 0)
 
-
-
-console.log('rules parsed: ', rules)
-console.log('updates parsed: ', updates)
+console.log('Solution to Part 1:', summedTotal)
 
 // -- Part 1 Solved -- //
 

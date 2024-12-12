@@ -62,7 +62,6 @@ const summedTotal = correctUpdates.reduce((total, update) => {
 }, 0)
 
 console.log('Solution to Part 1:', summedTotal)
-
 // -- Part 1 Solved -- //
 
 // ============================== Part 2 ============================== //
